@@ -1,0 +1,13 @@
+
+- name: Spin up a local development environment
+  hosts: localhost
+  gather_facts: True
+
+  tasks:
+  - name: Run Docker Compose
+    command: docker-compose up -d
+
+  - name: Run database migrations
+    command: npx prisma migrate deploy
+
+

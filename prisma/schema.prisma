@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  PENDING
+  TODO
+  DONE
+  DELETED
+}
+
+enum RewardType {
+  POINTS
+  BADGE
+}
+
+enum RewardStatus {
+  PENDING
+  CLAIMED
+  REDEEMED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model Reward {
+  type   RewardType
+  task   Task         @relation(fields: [taskId], references: [id])
+  taskId Int
+  user   User         @relation(fields: [userId], references: [id])
+  userId Int
+  status RewardStatus @default(PENDING)
+
+  @@unique([taskId, userId])
+}
+
+model Task {
+  id         Int       @id @default(autoincrement())
+  title      String
+  status     Status    @default(PENDING)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+  user       User      @relation(fields: [userId], references: [id])
+  userId     Int
+  priority   Priority  @default(LOW)
+  remindedAt DateTime?
+
+  Reward Reward[]
+}
+
+model User {
+  id     Int      @id @default(autoincrement())
+  email  String   @unique
+  name   String?
+  Task   Task[]
+  Reward Reward[]
+}

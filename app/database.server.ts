@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === "production") {
 
 function getClient(){
   const {DATABASE_URL} = process.env
+  console.log(DATABASE_URL)
   const databaseUrl = new URL(DATABASE_URL as string);
 
   const client = new PrismaClient({
@@ -37,3 +38,6 @@ function getClient(){
   return client
 
 }
+
+
+export {prisma}

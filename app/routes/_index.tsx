@@ -1,4 +1,6 @@
 import type { V2_MetaFunction } from "@remix-run/node";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { prisma } from "~/database.server";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -8,6 +10,7 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export default function Index() {
+  console.log(prisma.user);
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <p>Welcome to remix</p>

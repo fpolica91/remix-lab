@@ -5,9 +5,12 @@ services:
     command: npm run dev
     ports:
       - "3000:3000"
+    volumes:
+      - .:/usr/server/app
+      - /usr/server/app/node_modules # this is to avoid installing node_modules in the container
   postgres:
     image: postgres:latest
-    restart: always
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

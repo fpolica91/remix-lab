@@ -62,9 +62,11 @@ model Task {
 }
 
 model User {
-  id     Int      @id @default(autoincrement())
-  email  String   @unique
-  name   String?
-  Task   Task[]
-  Reward Reward[]
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  name       String?
+  auth0Id    String   @unique
+  Task       Task[]
+  Reward     Reward[]
+  pictureUrl String?
 }

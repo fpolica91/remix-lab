@@ -12,12 +12,10 @@ export const meta: V2_MetaFunction = () => {
 
 type LoaderError = { message: string } | null;
 export const loader = async ({ request }: LoaderArgs) => {
-  // await auth.isAuthenticated(request);
-  // const session = await getSession(request.headers.get("Cookie"));
-
-  // const error = session.get(auth.sessionErrorKey) as LoaderError;
-  // return json({ error });
-  return json({ error: null });
+  await auth.isAuthenticated(request, { successRedirect: "/todos" });
+  const session = await getSession(request.headers.get("Cookie"));
+  const error = session.get(auth.sessionErrorKey) as LoaderError;
+  return json({ error });
 };
 
 export default function Index() {

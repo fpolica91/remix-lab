@@ -9,6 +9,9 @@ async function findUserByAuth0Id(auth0Id: string) {
     where: {
       auth0Id: auth0Id,
     },
+    include: {
+      Task: true,
+    }
   });
   return user;
 }

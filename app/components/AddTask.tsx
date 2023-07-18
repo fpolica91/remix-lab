@@ -15,7 +15,7 @@ export function AddTaskModal({ isOpen, onClose }: AddTaskModalProps) {
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg p-8 m-4 max-w-md max-h-full text-center overflow-auto">
         <h2 className="mb-4 text-2xl font-bold text-gray-900">Add Task</h2>
-        <Form method="post">
+        <Form method="post" onSubmit={() => onClose()}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               <span>Title:</span>

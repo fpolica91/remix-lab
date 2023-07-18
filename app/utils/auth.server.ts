@@ -5,7 +5,7 @@ import { Auth0Strategy } from "remix-auth-auth0";
 import type { Auth0UserInformation } from "~/@types/auth0-user.interface";
 
 import {
-  // AUTH0_CALLBACK_URL,
+  AUTH0_CALLBACK_URL,
   AUTH0_CLIENT_ID,
   AUTH0_CLIENT_SECRET,
   AUTH0_DOMAIN,
@@ -31,7 +31,7 @@ export const auth = new Authenticator<Auth0Profile>(sessionStorage);
 
 const auth0Strategy = new Auth0Strategy(
   {
-    callbackURL: "http://localhost:3000/callback/",
+    callbackURL: AUTH0_CALLBACK_URL,
     domain: AUTH0_DOMAIN,
     clientID: AUTH0_CLIENT_ID,
     clientSecret: AUTH0_CLIENT_SECRET,

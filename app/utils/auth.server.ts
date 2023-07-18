@@ -11,7 +11,7 @@ import {
   AUTH0_DOMAIN,
   SECRETS,
 } from "~/constants/index.server";
-import { createUser, findUserByAuth0Id } from "~/users.server";
+import { createUser, findUserByAuth0Id } from "./users.server";
 
 
 

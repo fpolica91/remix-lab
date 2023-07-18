@@ -1,11 +1,11 @@
 import type { User } from "@prisma/client";
 
-type Status = "PENDING"
+export type Status = "PENDING"
   | "TODO"
   | "DONE"
   | "DELETED"
 
-type Priority =
+export type Priority =
   "LOW"
  | "MEDIUM"
  | "HIGH"

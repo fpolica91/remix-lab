@@ -1,7 +1,7 @@
 
 
 import {prisma} from "~/database.server"
-import type { Auth0UserInformation } from "./@types/auth0-user.interface";
+import type { Auth0UserInformation } from "../@types/auth0-user.interface";
 
 
 async function findUserByAuth0Id(auth0Id: string) {

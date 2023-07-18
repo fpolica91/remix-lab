@@ -54,4 +54,4 @@ jobs:
           app-name: 'task-remix-lab'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B97001DCDACD4E5DBB4EEF4F72411D33 }}
-          package: .
+          package: ${{ github.workspace }}/node-app.zip
